@@ -1,19 +1,17 @@
 import { title } from "case";
 import fs from "fs";
+import path from "path";
 import Head from "next/head";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
-import Card from "../components/Card";
-import SectionHeading from "../components/SectionHeading";
-import Title from "../components/Title";
+import Card from "../../components/Card";
+import SectionHeading from "../../components/SectionHeading";
+import Title from "../../components/Title";
 import styles from "../styles/home.module.css";
-import { getInitialBlogPosts, Post } from "../util/getInitialBlogPosts";
-import { talks } from "../util/talks";
-import names from "../util/tej-variants";
-
-// @ts-ignore
-const path = __non_webpack_require__("path");
+import { getInitialBlogPosts, Post } from "../../util/getInitialBlogPosts";
+import { talks } from "../../util/talks";
+import names from "../../util/tej-variants";
 
 const App = ({
   name,
@@ -73,29 +71,6 @@ const App = ({
 
   return (
     <div className={styles.container} ref={containerElement}>
-      <Head>
-        <title>Tejas Kumar | Speaker, Engineer, JavaScript, Love</title>
-        <meta
-          name="description"
-          content="Personal website of Tejas Kumar, an award-winning web developer and international speaker."
-        />
-      </Head>
-      <section className={styles.intro}>
-        <Title
-          style={{ position: "absolute", transform: "translateY(-50%)" }}
-          length={name.length}
-        >
-          <b>TEJ</b>
-          {name}
-        </Title>
-        <img
-          width={408}
-          height={612}
-          style={{ zIndex: 1, background: "transparent" }}
-          alt={`Tejas ${currentTejas}`}
-          src={`/tejass/${currentTejas}.png`}
-        />
-      </section>
       <div className={styles.sectionContainer}>
         <section className={styles.section}>
           <SectionHeading>Most Recent Talk</SectionHeading>

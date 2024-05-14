@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import { FC, useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
-import { Plock } from "react-plock";
+import { Masonry } from "react-plock";
 import { Tweet } from "react-static-tweets";
 import Head from "next/head";
 import { fetchTweetAst } from "static-tweets";
@@ -103,13 +103,13 @@ const Talks: FC<Props> = ({ initialTestimonials, talks }) => {
           What People Are Saying
         </Title>
         <div className={styles.tweets}>
-          <Plock>
+          {/* <Masonry>
             {testimonials.map(tweet => (
               <div key={tweet.id}>
                 <Tweet ast={tweet.ast} id={tweet.id} />
               </div>
             ))}
-          </Plock>
+          </Masonry> */}
           <div
             ref={$end}
             style={{

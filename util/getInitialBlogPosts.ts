@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from 'path';
 import { getBlogPostTitleFromFileContent } from "./getBlogPostTitleFromFileContent";
 
 export type Post = {
@@ -8,19 +9,19 @@ export type Post = {
   slug: string;
 };
 
-// @ts-ignore
-const path = __non_webpack_require__("path");
+const BLOGS_FOLDER = path.join(process.cwd(), 'blog');
 
 export async function getInitialBlogPosts(): Promise<{ posts: Post[] }> {
   const blogPosts = fs
-    .readdirSync(path.resolve("./blog/"))
+    .readdirSync(BLOGS_FOLDER)
     .filter(e => e.endsWith(".md"))
     .sort()
     .reverse();
 
   return {
     posts: blogPosts.map(name => {
-      const content = fs.readFileSync(path.resolve("./blog/", name), "utf8");
+      let filePath = path.join(BLOGS_FOLDER, name);
+      const content = fs.readFileSync(filePath, "utf8");
       const excerpt = content.split("\n")[2];
       return {
         title: getBlogPostTitleFromFileContent(content),
